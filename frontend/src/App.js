@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
-import ExploreEvents from './pages/ExploreEvents';
+import ExploreEvents from './pages/explore';
 import About from './pages/About';
-import EventDetails from './pages/EventDetails';
+import EventDetails from './pages/eventid';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Feedback from '/pages/Feedback';
