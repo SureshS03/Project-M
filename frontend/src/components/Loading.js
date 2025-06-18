@@ -11,8 +11,8 @@ const Loading = () => {
       fontSize: '1.5rem'
     }}>
       <img 
-        src="/logo.png" 
-        alt="Logo"
+        src="/logo.jpg" 
+        alt="/logo.jpg"
         style={{ width: '100px', marginBottom: '20px' }}
       />
       <p>Loading...</p>
