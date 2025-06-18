@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/home';
 import ExploreEvents from './pages/explore';
@@ -8,23 +8,32 @@ import EventChat from './pages/Eventchat';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Feedback from './pages/Feedback';
+import Loading from './components/Loading'; // Import the loading component
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  // Simulate loading for 1.5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <Loading />;
+
   return (
     <Router>
       <div>
-        {/* Simple Navigation Bar */}
         <nav style={{ padding: '1rem', background: '#f0f0f0' }}>
+          <img src="/logo.png" alt="Logo" style={{ height: '30px', marginRight: '10px' }} />
           <Link to="/" style={{ marginRight: '10px' }}>Home</Link>
           <Link to="/explore" style={{ marginRight: '10px' }}>Explore Events</Link>
           <Link to="/about" style={{ marginRight: '10px' }}>About</Link>
           <Link to="/login" style={{ marginRight: '10px' }}>Login</Link>
           <Link to="/signup" style={{ marginRight: '10px' }}>Signup</Link>
-          <Link to="/feedback" style={{ marginRight: '10px' }}>Feedback</Link>
-          {/* EventChat will need a specific event ID to work correctly */}
+          <Link to="/feedback">Feedback</Link>
         </nav>
 
-        {/* Routing */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/explore" element={<ExploreEvents />} />
