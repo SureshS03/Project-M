@@ -1,92 +1,51 @@
 import React, { useState } from "react";
+import { useNavigate, Link } from 'react-router-dom';
+import './login.css';
 
-function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("");
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleSumit = (e) => {
-    e.preventDefault();
-    if (!email || !password){
-      setError("please enter both email and password.nigga");
-    } else {
-      setError("");
-      console.log("login info",{ email, password });
-      // backend logic should be added here
-    }
+  const handleLogin = () => {
+    console.log('Logging in with:', email, password);
+    navigate('/'); 
   };
 
-  return(
-    <div style={StyleSheet.container}>
-      <form onSumit={handleSumit} style={styles.form}>
-        <h2>login</h2>r
+  return (
+    <div className="login-container">
+      <div className="login-logo">
+        <img src="/logo.png" alt="Logo" className="login-logo-img" />
+      </div>
 
-        <input
-         type="email"
-         placeholder="enter email"
-         value={email}
-         onChange={(e) => setEmail(e.target.value)}
-         style={styles.input}
+      <div className="login-form">
+        <h2>Login to your account</h2>
+        <label>Email</label>
+        <input 
+          type="email" 
+          value={email} 
+          onChange={e => setEmail(e.target.value)} 
+          placeholder="you@example.com"
         />
 
-        <input
-         type={showPassword ? "text" : "password"}
-         placeholder="Enter password"
-         value={password}
-         onChange={(e) => setPassword(e.target.value)}
-         style={styles.input}
+        <label>Password</label>
+        <input 
+          type="password" 
+          value={password} 
+          onChange={e => setPassword(e.target.value)} 
+          placeholder="********"
         />
-        <label>
-          <input 
-            type="checkbox"
-            onChange={() => setShowPassword(!showPassword)}
-        /> {""}
-        Show Password
-        </label>
 
-        {error && <p style={styles.error}>{error}</p>}
-
-        <button type="submit" style={styles.button}>
-          login
+        <button className="login-button" onClick={handleLogin}>
+          Login
         </button>
-      </form> 
-     </div>  
-  );
-  }
-  const styles = {
-    container: {
-      height: "100vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      background: "#f4f4f4",
-    },
-    form: {
-      display: "flex",
-      flexDirection: "column",
-      gap: "15px",
-      padding: "40px",
-      background: "fff",
-      borderRadius: "8px",
-      boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-    },
-    input: {
-      padding: "10px",
-      frontSize: "16px",
-    },
-    button: {
-      padding: "10px",
-      backgroundColor: "#007bff",
-      color: "fff",
-      border: "none",
-      frontSize: "16px",
-      cursor: "pointer",
-    },
-    error: {
-      color: "red",
-      frontSize: "14px",
-    },
-  };
 
-  export default Login;
+        <p className="switch-auth">
+          Don’t have an account? <Link to="/signup">Sign up</Link>
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
