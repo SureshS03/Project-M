@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/home';
 import ExploreEvents from './pages/explore';
-import About from './pages/About';
+import About from './pages/about';
 import EventDetails from './pages/eventid';
-import EventChat from './pages/Eventchat';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import Feedback from './pages/Feedback';
+import EventChat from './pages/eventchat';
+import Login from './pages/login';
+import Signup from './pages/signup';
+import Feedback from './pages/feedback';
 import Loading from './components/Loading'; // Import the loading component
 
 function App() {
