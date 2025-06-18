@@ -1,6 +1,11 @@
 import React from 'react';
 
 function Feedback() {
-    <h1>Feedback Page</h1>
+    return (
+        <div>
+            <h1>Feedback</h1>
+            <p>We don't give a fuck about your Feedback. Let us know how we can steal your peenar.</p>
+        </div>
+    )
 }
 export default Feedback;

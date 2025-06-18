@@ -1,6 +1,12 @@
 import React from 'react';
 
 function Login() {
-    <h1>Login Page</h1>
+  return (
+    <div>
+      <h1>Login</h1>
+      <p>Please enter your credentials to access your account.</p>
+    </div>
+  );
 }
+
 export default Login;

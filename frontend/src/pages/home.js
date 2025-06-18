@@ -1,6 +1,12 @@
 import React from 'react';
 
 function Home() {
-    <h1>Home Page</h1>
+  return (
+    <div>
+      <h1>Welcome to Project-M</h1>
+      <p>This is the home page. Explore events, join chats, and stay connected.</p>
+    </div>
+  );
 }
+
 export default Home;
