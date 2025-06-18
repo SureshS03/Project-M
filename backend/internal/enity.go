@@ -39,3 +39,13 @@ type Comments struct {
 	Msg        string    `json:"comment_msg"`
 	Created_at time.Time `json:"created_at"`
 }
+
+//TODO have to think about attendace and other enities and db
+/*
+type Attendance struct{
+	Id int `json:"attendance"`
+	User_id Users `json:"user_id"`
+	Event_id Events `json:"event_id"`
+	Managerid Users `json:"manager_id"`
+}
+*/
