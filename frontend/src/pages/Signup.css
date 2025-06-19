@@ -20,8 +20,10 @@
 }
 
 .logo-section img.logo {
-  width: 80px;
-  margin-bottom: 1rem;
+  height: 150px;
+  width: auto;
+  display: block;
+  margin: 0 auto 2rem auto;
 }
 
 .subtitle {

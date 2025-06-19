@@ -12,8 +12,8 @@ const Loading = () => {
     }}>
       <img 
         src="/logo.jpg" 
-        alt="/logo.jpg"
-        style={{ width: '100px', marginBottom: '20px' }}
+        alt="Logo"
+        style={{ height: '400px', width: 'auto', marginBottom: '40px' }}
       />
       <p>Loading...</p>
     </div>
