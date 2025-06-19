@@ -1,49 +1,59 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    console.log('Logging in with:', email, password);
-    navigate('/'); 
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validateEmail(email)) {
+      setError('Invalid email format');
+      return;
+    }
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters');
+      return;
+    }
+    setError('');
+    console.log('Login successful:', email);
+    navigate('/'); // redirect to homepage
   };
 
   return (
     <div className="login-container">
-      <div className="login-logo">
-        <img src="/logo.png" alt="Logo" className="login-logo-img" />
-      </div>
+      <form className="login-card" onSubmit={handleSubmit}>
+        <img src="/logo.jpg" alt="Logo" className="login-logo" />
+        <h1>Welcome Back</h1>
+        <p className="subtitle">Login to continue your journey</p>
 
-      <div className="login-form">
-        <h2>Login to your account</h2>
-        <label>Email</label>
-        <input 
-          type="email" 
-          value={email} 
-          onChange={e => setEmail(e.target.value)} 
-          placeholder="you@example.com"
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
         />
-
-        <label>Password</label>
-        <input 
-          type="password" 
-          value={password} 
-          onChange={e => setPassword(e.target.value)} 
-          placeholder="********"
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
         />
+        {error && <p className="error">{error}</p>}
 
-        <button className="login-button" onClick={handleLogin}>
-          Login
-        </button>
+        <button type="submit" className="submit-button">➝</button>
 
         <p className="switch-auth">
-          Don’t have an account? <Link to="/signup">Sign up</Link>
+          Don't have an account? <Link to="/signup">Sign up</Link>
         </p>
-      </div>
+      </form>
     </div>
   );
 };

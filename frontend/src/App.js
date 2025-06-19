@@ -25,7 +25,7 @@ function App() {
     <Router>
       <div>
         <nav style={{ padding: '1rem', background: '#f0f0f0' }}>
-          <img src="/logo.jpg" alt="Logo" style={{ height: '30px', marginRight: '10px' }} />
+          <img src="/logo.jpg" alt="logo.png" style={{ height: '30px', marginRight: '10px' }} />
           <Link to="/" style={{ marginRight: '10px' }}>Home</Link>
           <Link to="/explore" style={{ marginRight: '10px' }}>Explore Events</Link>
           <Link to="/about" style={{ marginRight: '10px' }}>About</Link>

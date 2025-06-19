@@ -1,48 +1,70 @@
+// src/pages/Signup.js
 import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import './Signup.css';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSignup = () => {
-    console.log("Email:", email);
-    console.log("Password:", password);
-    // You can send this to backend using fetch/axios here
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const validatePassword = (password) => {
+    return /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(password);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validateEmail(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+    if (!validatePassword(password)) {
+      setError('Password must be 8+ chars, 1 capital, 1 number & 1 symbol.');
+      return;
+    }
+    setError('');
+    console.log('Signed up:', email);
+    navigate('/');
   };
 
   return (
     <div className="signup-container">
-      <div className="signup-logo-section">
-        <img src="/logo.jpg" alt="Logo" className="signup-logo" />
-      </div>
-
-      <div className="signup-form-section">
-        <div className="signup-box">
-          <h2>Welcome to Project-M</h2>
-          <p>Please sign up to continue.</p>
-
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="you@email.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="********"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <button className="signup-button" onClick={handleSignup}>
-            Continue with Email
-          </button>
+      <form onSubmit={handleSubmit} className="signup-card">
+        <div className="logo-section">
+          <img src="/logo.jpg" alt="Logo" className="login-logo" />
+          <h1>Welcome to Project-M</h1>
+          <p className="subtitle">Create your account to get started</p>
         </div>
-      </div>
+
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        {error && <p className="error">{error}</p>}
+
+        <button type="submit" className="submit-button">
+          ➝
+        </button>
+
+        <p className="switch-auth">
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
+      </form>
     </div>
   );
 };
