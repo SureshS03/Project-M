@@ -1,0 +1,132 @@
+.navbar {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(to center,  #1e1b4b, #0f0f0f);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  z-index: 50;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.logo:hover {
+  color: #c084fc;
+}
+
+.link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #a78bfa;
+}
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.signupButton {
+  background-color: #6d28d9;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.signupButton:hover {
+  background-color: #7c3aed;
+}
+
+.loginButton {
+  border: 0.0625rem solid #a78bfa;
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.loginButton:hover {
+  background-color: #4c1d95;
+}
+
+.avatarButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.avatarInitial {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background-color: #9333ea;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.avatarImage {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  width: 10rem;
+  background-color: black;
+  border: 0.0625rem solid #1f2937;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.5);
+}
+
+.dropdownItem {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.dropdownItem:hover {
+  background-color: #1f2937;
+}

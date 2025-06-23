@@ -1,38 +1,80 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FiMenu, FiX } from 'react-icons/fi';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import styles from './responsivenavbar.module.css';
 
 export default function ResponsiveNavbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Mock auth state
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [profilePic, setProfilePic] = useState(null); // Placeholder for user-uploaded image
+  const userName = 'User Name';
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setShowDropdown(false);
+    navigate('/');
+  };
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    navigate('/');
+  };
+
+  const handleSignup = () => {
+    setIsLoggedIn(true);
+    navigate('/');
+  };
+
+  const getInitial = () => userName ? userName.charAt(0).toUpperCase() : '?';
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-white/30 backdrop-blur shadow-sm">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
-        <Link to="/" className="text-2xl font-bold text-primary">Project-M</Link>
-
-        <div className="hidden md:flex space-x-6">
-          <Link to="/" className="hover:text-primary">Home</Link>
-          <Link to="/profile" className="hover:text-primary">Profile</Link>
-          <Link to="/explore" className="hover:text-primary">Explore</Link>
-          <Link to="/about" className="hover:text-primary">About</Link>
-          <Link to="/login" className="hover:text-primary">Login</Link>
-        </div>
-
-        <div className="md:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-          </button>
-        </div>
+    <nav className={styles.navbar}>
+      <div className={styles.navLeft}>
+        <Link to="/" className={styles.logo}>
+          Project-M
+        </Link>
+        <Link to="/explore" className={styles.link}>
+          Explore Events
+        </Link>
       </div>
 
-      {menuOpen && (
-        <div className="md:hidden bg-white px-6 py-4 space-y-4">
-          <Link to="/" onClick={() => setMenuOpen(false)} className="block">Home</Link>
-          <Link to="/explore" onClick={() => setMenuOpen(false)} className="block">Explore</Link>
-          <Link to="/about" onClick={() => setMenuOpen(false)} className="block">About</Link>
-          <Link to="/login" onClick={() => setMenuOpen(false)} className="block">Login</Link>
-        </div>
-      )}
+      <div className={styles.buttonGroup}>
+        {!isLoggedIn ? (
+          <>
+            <button onClick={handleSignup} className={styles.signupButton}>
+              Sign Up
+            </button>
+            <button onClick={handleLogin} className={styles.loginButton}>
+              Login
+            </button>
+          </>
+        ) : (
+          <div style={{ position: 'relative' }}>
+            <button
+              onClick={() => setShowDropdown(!showDropdown)}
+              className={styles.avatarButton}
+            >
+              {profilePic ? (
+                <img src={profilePic} alt="Profile" className={styles.avatarImage} />
+              ) : (
+                <div className={styles.avatarInitial}>{getInitial()}</div>
+              )}
+              <span>{userName}</span>
+            </button>
+            {showDropdown && (
+              <div className={styles.dropdown}>
+                <Link to="/profile" className={styles.dropdownItem}>
+                  Profile
+                </Link>
+                <button onClick={handleLogout} className={styles.dropdownItem}>
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </nav>
   );
 }

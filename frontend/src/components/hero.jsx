@@ -1,34 +1,31 @@
 import React from 'react';
+import styles from './hero.module.css'
 import { motion } from 'framer-motion';
 
-export default function Hero() {
+const Hero = () => {
   return (
-    <section className="hero-bg h-screen flex flex-col items-center justify-center text-white text-center px-4">
-      <motion.h1
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
-        className="text-5xl md:text-7xl font-extrabold leading-tight"
+    <section className={styles.heroSection}>
+      <motion.div
+      className={styles.content}
+      initial={{opacity: 0, y: 40}}
+      animate={{ opacity: 1, y: 0}}
+      transition={{ duration: 0.8}}
       >
-        Engage. Track. Grow.
-      </motion.h1>
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.6 }}
-        className="mt-4 text-lg md:text-2xl max-w-2xl"
-      >
-        A modern events platform with QR attendance, group chat, dynamic reports, and more.
-      </motion.p>
-      <motion.a
-        href="#features"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.6 }}
-        className="mt-8 inline-block px-8 py-4 bg-white text-primary font-semibold rounded-full shadow-lg hover:scale-105 transform transition"
-      >
-        Explore Features
-      </motion.a>
+        <h1 className={styles.title}>Reimagine Your Events</h1>
+        <p className={styles.subtitle}>
+          QR check-ins. Live chat. Leaderboards. All in one elegant platform.
+        </p>
+        <motion.button
+        className={styles.cta}
+        whileHover={{ scale: 1.05}}
+        whileTap={{ scale: 0.97}}
+        >
+          Get Started
+        </motion.button>
+      </motion.div>
     </section>
+
   );
-}
+};
+
+export default Hero;

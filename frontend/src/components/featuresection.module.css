@@ -1,0 +1,48 @@
+.featureSection {
+  padding: 4rem 2rem;
+  background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+  color: white;
+  text-align: center;
+}
+
+.heading {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 3rem;
+  background: linear-gradient(to right, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #cccccc;
+  line-height: 1.5;
+}

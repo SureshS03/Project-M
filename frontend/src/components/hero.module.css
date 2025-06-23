@@ -1,0 +1,43 @@
+.heroSection {
+  background: radial-gradient(circle at top left, #1e1b4b, #0f0f0f);
+  padding: 6rem 2rem;
+  text-align: center;
+  color: white;
+}
+
+.content {
+  max-width: 90%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to right, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: #cccccc;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.cta {
+  background: linear-gradient(to right, #7c3aed, #d946ef);
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 999px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.cta:hover {
+  background: linear-gradient(to right, #d946ef, #7c3aed);
+}
