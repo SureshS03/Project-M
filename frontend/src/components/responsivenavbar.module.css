@@ -1,7 +1,7 @@
 .navbar {
   width: 100%;
   padding: 1rem 1.5rem;
-  background: linear-gradient(to center,  #1e1b4b, #0f0f0f);
+  background: linear-gradient(to right,  #1e1b4b, #0f0f0f);
   color: white;
   display: flex;
   justify-content: space-between;
@@ -21,7 +21,7 @@
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: white;
+  color: rgb(247, 240, 240);
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -45,6 +45,7 @@
 .buttonGroup {
   display: flex;
   align-items: center;
+  margin-right: 2vw ;
   gap: 1rem;
 }
 
@@ -106,27 +107,4 @@
   object-fit: cover;
 }
 
-.dropdown {
-  position: absolute;
-  right: 0;
-  margin-top: 0.5rem;
-  width: 10rem;
-  background-color: black;
-  border: 0.0625rem solid #1f2937;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.5);
-}
 
-.dropdownItem {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  text-align: left;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
-
-.dropdownItem:hover {
-  background-color: #1f2937;
-}

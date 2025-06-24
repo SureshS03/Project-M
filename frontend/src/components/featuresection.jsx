@@ -8,8 +8,8 @@ const features = [
     description: "Quick check-in using unique user QR codes at events",
   },
   {
-    title: "Live Group Chat",
-    description: "Collaborate, coordinate, and connect during events.",
+    title: "Ranking System",
+    description: "Gain more respect among the community.",
   },
   {
     title: "Event Analytics",
