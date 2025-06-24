@@ -1,0 +1,17 @@
+.error_container {
+  height: 100vh; /* full screen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical center */
+  align-items: center;     /* horizontal center */
+  background: linear-gradient(to top, #0f0f0f, #1a1a1a);
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 0 20px;
+}
+#text_error {
+ background: linear-gradient(to right, #8b5cf6, #ec4899); 
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

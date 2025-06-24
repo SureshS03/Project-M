@@ -6,13 +6,12 @@ import EventDetails from './pages/eventdetail';
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Feedback from './pages/feedback';
-import Navbar from './components/responsivenavbar';
+import Error from './pages/error';
 
 function App() {
   return (
     <Router>
       <div className="bg-white min-h-screen text-gray-800">
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -20,10 +19,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/feedback" element={<Feedback />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </div>
     </Router>
   );
 }
-
 export default App;
