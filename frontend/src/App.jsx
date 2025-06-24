@@ -9,6 +9,7 @@ import Feedback from './pages/feedback';
 import Navbar from './components/responsivenavbar';
 
 function App() {
+  console.log('called')
   return (
     <Router>
       <div className="bg-white min-h-screen text-gray-800">
