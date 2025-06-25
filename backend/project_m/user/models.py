@@ -63,6 +63,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         error_messages={'blank': "Bio cannot be blank."}
     )
     is_host = models.BooleanField(default=False)
+    is_own_community = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
