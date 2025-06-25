@@ -16,12 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-)
+from rest_framework_simplejwt.views import TokenObtainPairView
+from django.http import JsonResponse
+
+# ✅ Add this view to handle the root URL
+def home(request):
+    return JsonResponse({"message": "Welcome to the Community Event API 🎉"})
+
 urlpatterns = [
+    #path('', home),  # 👈 This handles requests to http://127.0.0.1:8000/
     path('admin/', admin.site.urls),
     path('api/users/', include('user.urls')),
     path('api/communities/', include('community.urls')),
+    path('api/events/', include('event.urls')),
     path('api/tokenlogin/', TokenObtainPairView.as_view(), name='token'),
 ]

@@ -1,10 +1,11 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
-from .models import Event
-from .serializers import EventSerializer
 from rest_framework.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
+from .models import Event
+from .serializers import EventSerializer
+
 
 class EventListCreateView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -19,8 +20,10 @@ class EventListCreateView(APIView):
         if not user.is_authenticated:
             return Response({"detail": "Authentication required."}, status=status.HTTP_401_UNAUTHORIZED)
 
-        if not user.is_host:
-            raise PermissionDenied("Only hosts can create events.")
+        if not user.is_own_community:
+             return Response(
+            {"detail": "Only community owners can create events."},
+            status=status.HTTP_400_BAD_REQUEST)
 
         serializer = EventSerializer(data=request.data)
         if serializer.is_valid():
@@ -42,7 +45,10 @@ class EventDetailView(APIView):
 
     def put(self, request, pk):
         event = self.get_object(pk)
-        serializer = EventSerializer(event, data=request.data)
+        if event.host != request.user:
+            raise PermissionDenied("Only the host can update this event.")
+
+        serializer = EventSerializer(event, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -50,5 +56,7 @@ class EventDetailView(APIView):
 
     def delete(self, request, pk):
         event = self.get_object(pk)
+        if event.host != request.user:
+            raise PermissionDenied("Only the host can delete this event.")
         event.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
