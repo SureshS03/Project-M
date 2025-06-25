@@ -9,6 +9,7 @@ export default function ResponsiveNavbar() {
   const [profilePic, setProfilePic] = useState(null); // Placeholder for user-uploaded image
   const userName = 'User Name';
   const navigate = useNavigate();
+  
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -18,7 +19,7 @@ export default function ResponsiveNavbar() {
 
   const handleLogin = () => {
     setIsLoggedIn(true);
-    navigate('/');
+    navigate('/login');
   };
 
   const handleSignup = () => {

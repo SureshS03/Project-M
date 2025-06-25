@@ -1,0 +1,54 @@
+.section {
+  padding: 15vh 7.5vw;
+  background: linear-gradient(135deg, #1e1b4b, #0f0f0f);
+  color: white;
+}
+
+.heading {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+   background: linear-gradient(to right, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  justify-items: center;
+}
+
+.card {
+  background-color: #1e1b4b;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  max-width: 18rem;
+  width: 100%;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-0.5rem);
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  background: linear-gradient(to right, #8b5cf6, #ec4899);
+  margin-bottom: 0.5rem;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.date,
+.location {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  margin-bottom: 0.25rem;
+}

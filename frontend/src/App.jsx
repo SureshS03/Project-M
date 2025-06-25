@@ -7,6 +7,8 @@ import Login from './pages/login';
 import Signup from './pages/signup';
 import Feedback from './pages/feedback';
 import Error from './pages/error';
+import Terms from './pages/terms';
+import Privacy from './pages/privacy';
 
 function App() {
   console.log('called')
@@ -21,6 +23,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="*" element={<Error />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} /> 
         </Routes>
       </div>
     </Router>
