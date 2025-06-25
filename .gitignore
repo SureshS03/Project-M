@@ -175,3 +175,5 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+backend/project_m/community_images/
