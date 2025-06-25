@@ -8,7 +8,7 @@
 
 /* LEFT SECTION */
 .loginLeft {
-  flex: 2;
+  flex: 1.5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,7 +49,7 @@
 
 .loginForm {
   width: 100%;
-  max-width: 320px;
+  max-width: 420px;
   display: flex;
   flex-direction: column;
   gap: 20px;
