@@ -1,0 +1,1 @@
+bharath add git ignore for events thumb nail
