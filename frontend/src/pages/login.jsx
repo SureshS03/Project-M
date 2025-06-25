@@ -1,47 +1,82 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './login.module.css';
+import Logo from '../assets/logo512.png';
 
-export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const LoginPage = () => {
   const navigate = useNavigate();
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  useEffect(() => {
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      navigate('/');
-    }
-  }, [navigate]);
-
-  const handleSubmit = e => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    fetch('/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    })
-      .then(async res => {
-        if (!res.ok) throw new Error('Login failed');
-        const data = await res.json();
-        localStorage.setItem('authToken', data.token);
-        navigate('/');
-      })
-      .catch(err => {
-        console.error(err);
-        alert('Invalid credentials, please try again.');
+
+    if (userName.trim() === '') {
+      setError('Username is required');
+      return;
+    }
+
+    try {
+      const res = await fetch('https://localhost/api/tokenlogin/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userName, password }),
       });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        localStorage.setItem('token', data.token);
+        navigate('/home');
+      } else {
+        setError(data.message || 'Login failed');
+      }
+    } catch (err) {
+      setError('Something went wrong!');
+      console.error(err);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-20 p-6 bg-white rounded-lg shadow">
-      <h2 className="text-2xl font-bold mb-4">Login</h2>
-      <label className="block mb-2">Email
-        <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full border p-2 rounded" required />
-      </label>
-      <label className="block mb-4">Password
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} className="w-full border p-2 rounded" required />
-      </label>
-      <button type="submit" className="w-full py-2 bg-primary text-white rounded-lg">Sign In</button>
-    </form>
+    <div className={styles.loginContainer}>
+      <div className={styles.loginLeft}>
+        <img src={Logo} alt="Logo" className={styles.logo} />
+        <div className={styles.welcomeTextContainer}>
+          <h3 className={styles.welcomeText}>Welcome to Project-M</h3>
+          <p className={styles.welcomeText}>Please login to continue</p>
+        </div>
+      </div>
+
+      <div className={styles.loginRight}>
+        <form className={styles.loginForm} onSubmit={handleLogin}>
+          <h2>Login</h2>
+
+          <input
+            type="text"
+            placeholder="Username"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            required
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          {error && <p style={{ color: 'red', fontSize: '14px' }}>{error}</p>}
+
+          <button type="submit">LogIn</button>
+        </form>
+      </div>
+    </div>
   );
-}
+};
+
+export default LoginPage;

@@ -1,0 +1,103 @@
+.loginContainer {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(to left, #1e1b4b, #0f0f0f);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* LEFT SECTION */
+.loginLeft {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #333;
+  padding: 40px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.logo {
+  max-width: 250px;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.welcomeTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.welcomeText {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* RIGHT SECTION */
+.loginRight {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.loginForm {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px); /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   background-color: rgba(255, 255, 255, 0.08); /* transparent white */
+  color: white;
+}
+
+.loginForm h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+.loginForm input {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2b3038;
+  opacity: 0.9;
+  color: white;
+  font-size: 16px;
+}
+
+.loginForm input:focus {
+  outline: none;
+  background-color: #262626;
+}
+
+.loginForm button {
+  padding: 12px;
+  background-color: #4a00e0;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.loginForm button:hover {
+  background-color: #6a00ff;
+}
+
