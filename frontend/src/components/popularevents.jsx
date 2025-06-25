@@ -30,25 +30,56 @@ const dummyEvents = [
     location: 'Hyderabad',
     image: '/images/event4.png',
   },
+  {
+    id: 5,
+    title: 'Cloud Expo India',
+    date: 'September 1, 2025',
+    location: 'Delhi',
+    image: '/images/event5.png',
+  },
+  {
+    id: 6,
+    title: 'React Summit',
+    date: 'September 10, 2025',
+    location: 'Pune',
+    image: '/images/event6.png',
+  },
+  {
+    id: 7,
+    title: 'Open Source Meetup',
+    date: 'October 5, 2025',
+    location: 'Kolkata',
+    image: '/images/event7.png',
+  },
+  {
+    id: 8,
+    title: 'Data Connect 2025',
+    date: 'October 20, 2025',
+    location: 'Ahmedabad',
+    image: '/images/event8.png',
+  },
 ];
 
 const PopularEvents = () => {
   return (
     <section className={styles.section}>
-      <h1 className={styles.heading}>Popular Events</h1>
-      <p className={styles.subheading}>
-        Discover trending events happening around you.
-      </p>
+      <div className={styles.header}>
+        <h1 className={styles.heading}>Explore Popular Events in <span className={styles.city}>Chennai, IN</span></h1>
+        
+      </div>
       <div className={styles.grid}>
         {dummyEvents.map((event) => (
           <div key={event.id} className={styles.card}>
             <img src={event.image} alt={event.title} className={styles.image} />
-            <h3 className={styles.title}>{event.title}</h3>
-            <p className={styles.date}>{event.date}</p>
-            <p className={styles.location}>{event.location}</p>
-            <div className={styles.buttons}>
-              <button className={styles.viewBtn}>View Event</button>
-              <button className={styles.joinBtn}>Join</button>
+            <div className={styles.details}>
+              <h3 className={styles.title}>{event.title}</h3>
+              <p className={styles.host}>Hosted by: Tech Community</p>
+              <p className={styles.date}>{event.date}</p>
+              <p className={styles.location}>{event.location}</p>
+              <div className={styles.footer}>
+                <span>100 going</span>
+                <span> Free</span>
+              </div>
             </div>
           </div>
         ))}

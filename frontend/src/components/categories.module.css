@@ -1,0 +1,47 @@
+.section {
+  padding: 6vh 5vw;
+  background: linear-gradient(135deg, #5b3dac, #400372);
+  color: white;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+  color: white;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: flex-start;
+}
+
+.card {
+  
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-0.3rem);
+  background-color: #5f149c;
+}
+
+.icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  color: #e2e8f0;
+}

@@ -1,6 +1,6 @@
 .featureSection {
   padding: 4rem 2rem;
-  background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+  background: linear-gradient(135deg, #5a1bcf, #0f0f0f);
   color: white;
   text-align: center;
 }
@@ -9,7 +9,7 @@
   font-size: clamp(2rem, 4vw, 2.5rem);
   font-weight: 700;
   margin-bottom: 3rem;
-  background: linear-gradient(to right, #8b5cf6, #ec4899);
+  background: white;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -28,7 +28,7 @@
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
+  
   transition: transform 0.3s ease;
 }
 
