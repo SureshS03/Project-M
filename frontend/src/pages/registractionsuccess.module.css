@@ -1,0 +1,21 @@
+.section {
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#p{
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+#h1{
+ background: linear-gradient(to right, #8b5cf6, #ec4899); 
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
