@@ -7,7 +7,7 @@ import Login from './pages/login';
 import Signup from './pages/signup';
 import Feedback from './pages/feedback';
 import Error from './pages/error';
-
+import RegistractionSuccess from './pages/registractionsuccess';
 function App() {
   console.log('called')
   return (
@@ -20,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/feedback" element={<Feedback />} />
+          <Route path="/success" element={<RegistractionSuccess />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </div>
