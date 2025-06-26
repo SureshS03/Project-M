@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate
 from .models import User
 from .serializers import UserSerializer, UserSignupSerializer, UserLoginSerializer
 from rest_framework.permissions import IsAuthenticated
+from django.shortcuts import get_object_or_404
 
 
 class SignupView(APIView):
@@ -14,6 +15,13 @@ class SignupView(APIView):
             user = serializer.save()
             return Response(UserSerializer(user).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class SingleUserView(APIView):
+    def get(self, request, user_id):
+        user = get_object_or_404(User, id=user_id)
+        serializer = UserSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 class LoginView(APIView):
     def post(self, request):
         login_data = UserLoginSerializer(data=request.data)
