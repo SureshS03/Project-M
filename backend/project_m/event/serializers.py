@@ -25,6 +25,7 @@ class EventSerializer(serializers.ModelSerializer):
             'updated_at',
             'is_active',
             'max_participants',
+            'community_id',
         ]
         read_only_fields = ['id', 'created_at', 'updated_at', 'host', 'host_username']
 

@@ -14,6 +14,14 @@ class Event(models.Model):
         on_delete=models.CASCADE,
         related_name="hosted_events"
     )
+
+    community = models.ForeignKey(
+    'community.Community',
+    on_delete=models.CASCADE,
+    related_name='events_list',
+    )
+
+
     place = models.CharField(max_length=255)
 
     venue = models.CharField(max_length=255)

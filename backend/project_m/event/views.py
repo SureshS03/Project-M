@@ -5,7 +5,7 @@ from rest_framework.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 from .models import Event
 from .serializers import EventSerializer
-
+from community.models import Community  # Import Community model
 
 class EventListCreateView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -20,17 +20,23 @@ class EventListCreateView(APIView):
         if not user.is_authenticated:
             return Response({"detail": "Authentication required."}, status=status.HTTP_401_UNAUTHORIZED)
 
-        if not user.is_own_community:
-             return Response(
-            {"detail": "Only community owners can create events."},
-            status=status.HTTP_400_BAD_REQUEST)
+        community_id = request.data.get("community_id")
+        if not community_id:
+            return Response({"detail": "community_id is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        community = get_object_or_404(Community, id=community_id)
+
+        if community.owner != user:
+            return Response(
+                {"detail": "You are not the owner of this community."},
+                status=status.HTTP_403_FORBIDDEN
+            )
 
         serializer = EventSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(host=user)
+            serializer.save(host=user, community=community)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 class EventDetailView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
