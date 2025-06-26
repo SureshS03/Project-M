@@ -21,8 +21,6 @@ from django.http import JsonResponse
 from django.conf import settings
 from django.conf.urls.static import static
 
-def home(request):
-    return JsonResponse({"message": "Welcome to the Community Event API 🎉"})
 
 urlpatterns = [
     path('admin/', admin.site.urls),
