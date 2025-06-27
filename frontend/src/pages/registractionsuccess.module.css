@@ -1,21 +1,42 @@
-.section {
-  min-height: 100vh;
-  background-color: #1a1a1a;
+.registration_success {
+  height: 100vh;
+  padding: 4rem 2rem;
+  background: linear-gradient(to bottom, #0f0f25, #1a1a40); /* deep purple tone */
   color: white;
-  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
 }
-#p{
-  font-size: 1.2rem;
-  color: #ccc;
+
+.success_title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
   margin-bottom: 1.5rem;
-}
-#h1{
- background: linear-gradient(to right, #8b5cf6, #ec4899); 
+  background: linear-gradient(to right, #8b5cf6, #ec4899); /* same as homepage heading */
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.success_message {
+  font-size: 1.1rem;
+  color: #cccccc;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.qr_container {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2); /* soft glow */
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease;
+}
+
+.qr_container:hover {
+  transform: translateY(-6px);
 }
