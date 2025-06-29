@@ -22,7 +22,7 @@ class CommunityBasicSerializer(serializers.ModelSerializer):
 class EventMinimalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ['id', 'title', 'date', 'event_type', 'event_mode', 'is_active']
+        fields = ['id', 'title', 'date', 'image','event_type', 'event_mode', 'is_active']
 
 class UserMinimalSerializer(serializers.ModelSerializer):
     class Meta:
