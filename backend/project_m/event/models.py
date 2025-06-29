@@ -18,7 +18,7 @@ class Event(models.Model):
     community = models.ForeignKey(
     'community.Community',
     on_delete=models.CASCADE,
-    related_name='events_list',
+    related_name='community_events',
     )
 
 

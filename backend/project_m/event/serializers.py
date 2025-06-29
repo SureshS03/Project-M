@@ -25,7 +25,7 @@ class EventSerializer(serializers.ModelSerializer):
             'updated_at',
             'is_active',
             'max_participants',
-            'community_id',
+            'community',
         ]
         read_only_fields = ['id', 'created_at', 'updated_at', 'host', 'host_username']
 
@@ -37,8 +37,12 @@ class EventSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         reg_date = data.get('registration_close_date')
+        event_date = data.get('date')
+
         if reg_date and reg_date < datetime.date.today():
             raise serializers.ValidationError("Registration close date cannot be in the past.")
-        if reg_date and reg_date > datetime.date.today():
-            raise serializers.ValidationError("Registration close date cannot be in the future.")
+
+        if reg_date and event_date and reg_date >= event_date:
+            raise serializers.ValidationError("Registration must close before the event date.")
+
         return data
