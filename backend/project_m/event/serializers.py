@@ -29,6 +29,12 @@ class EventSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['id', 'created_at', 'updated_at', 'host', 'host_username']
 
+    def get_thumbnail(self, obj):
+        request = self.context.get('request')
+        if obj.thumbnail and hasattr(obj.thumbnail, 'url'):
+            return request.build_absolute_uri(obj.thumbnail.url)
+        return None
+
     def validate(self, data):
         reg_date = data.get('registration_close_date')
         if reg_date and reg_date < datetime.date.today():

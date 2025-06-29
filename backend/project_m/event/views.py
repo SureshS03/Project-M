@@ -12,7 +12,7 @@ class EventListCreateView(APIView):
 
     def get(self, request):
         events = Event.objects.all()
-        serializer = EventSerializer(events, many=True)
+        serializer = EventSerializer(events, many=True, context={"request": request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
@@ -32,7 +32,7 @@ class EventListCreateView(APIView):
                 status=status.HTTP_403_FORBIDDEN
             )
 
-        serializer = EventSerializer(data=request.data)
+        serializer = EventSerializer(data=request.data, context={"request": request})
         if serializer.is_valid():
             serializer.save(host=user, community=community)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -46,7 +46,7 @@ class EventDetailView(APIView):
 
     def get(self, request, pk):
         event = self.get_object(pk)
-        serializer = EventSerializer(event)
+        serializer = EventSerializer(event, context={"request": request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, pk):
@@ -54,7 +54,7 @@ class EventDetailView(APIView):
         if event.host != request.user:
             raise PermissionDenied("Only the host can update this event.")
 
-        serializer = EventSerializer(event, data=request.data, partial=True)
+        serializer = EventSerializer(event, data=request.data, partial=True, context={"request": request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
