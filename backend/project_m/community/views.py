@@ -70,8 +70,8 @@ class EventsByCommunityView(APIView):
             return Response({"error": "community_id is required"}, status=400)
 
         community = get_object_or_404(Community, id=community_id)
-        events = community.events.all()
-        serializer = EventMinimalSerializer(events, many=True)
+        events = community.community_events.all()
+        serializer = EventMinimalSerializer(events, many=True, context={'request': request})
         return Response(serializer.data)
 
 class JoinCommunityView(APIView):

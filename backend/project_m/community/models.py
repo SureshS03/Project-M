@@ -11,12 +11,12 @@ class Community(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
     image = models.ImageField(upload_to='community_images/', blank=True, null=True)
-
-    events = models.ManyToManyField(
-        settings.EVENTS_MODEL,
-        related_name='communities',
-        blank=True
-    )
+    
+    #events = models.ManyToManyField(
+     #   settings.EVENTS_MODEL,
+      #  related_name='events',
+       # blank=True
+    #)
     
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,

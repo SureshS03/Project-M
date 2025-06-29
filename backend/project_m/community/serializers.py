@@ -24,11 +24,38 @@ class CommunityBasicSerializer(serializers.ModelSerializer):
         if obj.image and hasattr(obj.image, 'url'):
             return request.build_absolute_uri(obj.image.url)
         return None
-
+    
 class EventMinimalSerializer(serializers.ModelSerializer):
+    host_username = serializers.CharField(source='host.userName', read_only=True)
+
     class Meta:
         model = Event
-        fields = ['id', 'title', 'date', 'image','event_type', 'event_mode', 'is_active']
+        fields = [
+            'id',
+            'title',
+            'description',
+            'date',
+            'time',
+            'host',
+            'host_username',
+            'place',
+            'venue',
+            'registration_close_date',
+            'registration_close_time',
+            'event_mode',
+            'thumbnail',
+            'created_at',
+            'updated_at',
+            'is_active',
+            'max_participants',
+            'community',
+        ]
+    
+    def get_thumbnail(self, obj):
+        request = self.context.get('request')
+        if obj.thumbnail and hasattr(obj.thumbnail, 'url'):
+            return request.build_absolute_uri(obj.thumbnail.url)
+        return None
 
 class UserMinimalSerializer(serializers.ModelSerializer):
     class Meta:
@@ -38,8 +65,8 @@ class UserMinimalSerializer(serializers.ModelSerializer):
 class CommunityWithMembersAndEventsSerializer(serializers.ModelSerializer):
     members = UserMinimalSerializer(many=True, read_only=True)
     member_count = serializers.SerializerMethodField()
-    events = EventMinimalSerializer(many=True, read_only=True)
-
+    events = EventMinimalSerializer(many=True, read_only=True, source='community_events')
+    
     class Meta:
         model = Community
         fields = [
