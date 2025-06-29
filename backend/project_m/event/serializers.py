@@ -33,4 +33,6 @@ class EventSerializer(serializers.ModelSerializer):
         reg_date = data.get('registration_close_date')
         if reg_date and reg_date < datetime.date.today():
             raise serializers.ValidationError("Registration close date cannot be in the past.")
+        if reg_date and reg_date > datetime.date.today():
+            raise serializers.ValidationError("Registration close date cannot be in the future.")
         return data
