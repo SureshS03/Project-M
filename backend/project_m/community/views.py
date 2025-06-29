@@ -31,14 +31,14 @@ class CommunityCreateView(APIView):
 class CommunityListView(APIView):
     def get(self, request):
         communities = Community.objects.all()
-        serializer = CommunityBasicSerializer(communities, many=True)
+        serializer = CommunityBasicSerializer(communities,  many=True, context={'request': request})
         return Response(serializer.data)
 
 
 class CommunityDetailView(APIView):
     def get(self, request, community_id):
         community = get_object_or_404(Community, id=community_id)
-        serializer = CommunityWithMembersAndEventsSerializer(community)
+        serializer = CommunityWithMembersAndEventsSerializer(community, many=True, context={'request': request})
         return Response(serializer.data)
 
     def put(self, request, community_id):
